@@ -1,7 +1,10 @@
 package tp1.parts;
 
-public abstract class Component {
-	
+import java.io.Serializable;
+
+public abstract class Component implements Serializable {
+		
+	private static final long serialVersionUID = 7009510682969464474L;
 	protected Dimension3D dimensions;
 	protected abstract Dimension3D getDimensions();
 

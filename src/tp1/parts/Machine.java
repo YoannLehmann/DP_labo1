@@ -1,16 +1,9 @@
 package tp1.parts;
 
-import java.io.Serializable;
 
-public class Machine extends Composite implements Serializable {
+public class Machine extends Composite {
 	
-	private static final long serialVersionUID = -4131418366537245416L;
-	
-	public Machine(Dimension3D dimensions) {
-		super(dimensions);
-	}
-	
-
+	private static final long serialVersionUID = 5522983654152313135L;
 
 	@Override
 	public Dimension3D getDimensions() {

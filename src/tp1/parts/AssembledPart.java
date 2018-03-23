@@ -1,19 +1,22 @@
 package tp1.parts;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
 
-public class AssembledPart extends Composite implements Serializable {
+public class AssembledPart extends Composite {
 
-	private static final long serialVersionUID = -2805555670934919157L;
+	
+	private static final long serialVersionUID = -4460873300445291904L;
+	Dimension3D dimensions;
 	
 	public AssembledPart(Dimension3D dimensions) {
-		super(dimensions);
+		this.dimensions = dimensions;
 	}
 	
 	public String toString() {
 		return "Assembled[" + this.listOfComponent.toString() + ":" + this.dimensions + "]";
+	}
+
+	@Override
+	public Dimension3D getDimensions() {
+		return dimensions;
 	}
 }

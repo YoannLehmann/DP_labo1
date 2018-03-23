@@ -1,9 +1,9 @@
 package tp1.parts;
 
-import java.io.Serializable;
 
-public class Part extends Component implements Serializable {
-	private static final long serialVersionUID = -8298269984120412487L;
+public class Part extends Component  {
+	
+	private static final long serialVersionUID = 1287575424155186191L;
 	final private String name;
 	final private Dimension3D dimensions;
 	final private double weight;

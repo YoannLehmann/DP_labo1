@@ -21,7 +21,6 @@ public class CreateMachine {
 		System.out.println(m);
 		s.save(m);
 		System.out.println("Machine stored.");
-		
 	}
 
 	private static void createConfigFile() {
@@ -44,7 +43,7 @@ public class CreateMachine {
 		String tab[] = {"Latch", "Transformer", "Gage", "Screw", "Shaft", "Belt", "Clamp", "Nut", "Spring" };
 		int partnum = (int) (Math.random() * tab.length);
 		double w = 1 + (int) (Math.random() * 10) / 10.;
-		return new Part(tab[partnum], createRandomDimension(1), w);
+		return new Part(tab[partnum], createRandomDimension(10), w);
 	}
 
 	private static final int NUM_PARTS = 3;
@@ -53,13 +52,14 @@ public class CreateMachine {
 
 	private static Machine createRandomMachine() {
 		System.out.println("Creating a Machine...");
-		Machine m = new Machine(createRandomDimension(1));
+		
+		Machine m = new Machine();
 
 		for (int i=0; i<NUM_PARTS; i++)
 			m.addElement(createRandomPart());
 
 		for (int i=0; i<NUM_ASSEMBLED_PARTS; i++) {
-			AssembledPart ap = new AssembledPart(createRandomDimension(10));
+			AssembledPart ap = new AssembledPart(createRandomDimension(10)); 
 			for (int j=0; j<NUM_PARTS_ASSEMBLED; j++)
 				ap.addElement(createRandomPart());
 			m.addElement(ap);

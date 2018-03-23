@@ -5,13 +5,17 @@ import java.util.List;
 
 public abstract class Composite extends Component {
 	
-	protected List<Component> listOfComponent;
-	protected Dimension3D dimensions;
 	
-	public Composite(Dimension3D dimensions) {
+	private static final long serialVersionUID = -1821360688922886237L;
+	protected List<Component> listOfComponent;
+	
+	public Composite() {
 		this.listOfComponent = new ArrayList<>();
-		this.dimensions = dimensions;
 	}
+
+	public abstract String toString();
+	
+	public abstract Dimension3D getDimensions();
 	
 	public void addElement(Component part) {
 		this.listOfComponent.add(part);
@@ -21,9 +25,6 @@ public abstract class Composite extends Component {
 		return this.listOfComponent.size();
 	}
 
-	public Dimension3D getDimensions() {
-		return this.dimensions;
-	}
 
 	public double getVolume() {
 		return this.dimensions.x * this.dimensions.y * this.dimensions.z;
@@ -36,6 +37,5 @@ public abstract class Composite extends Component {
 		return w;
 	}
 
-	public abstract String toString();
 	
 }
