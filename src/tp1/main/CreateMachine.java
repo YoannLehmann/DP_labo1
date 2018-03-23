@@ -25,7 +25,7 @@ public class CreateMachine {
 
 	private static void createConfigFile() {
 		System.out.println("Creating configuration file...");
-		Config c = new Config();
+		Config c = Config.getInstance();
 		c.setDatabase(DATA_FILE);
 		c.setUsername("golum");
 		c.setPassword("myprecious");

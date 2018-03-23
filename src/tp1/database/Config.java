@@ -8,6 +8,8 @@ import java.util.Properties;
 
 
 public class Config {
+	
+	private static Config instance;
 	private String propertyFileName = null;
 	private String database = null;
 	private String username = null;
@@ -79,15 +81,31 @@ public class Config {
 		}
 	}
 
-	public Config() {
+	private Config() {
 		this("config.properties");
 	}
 
-	public Config(String file) {
+	private Config(String file) {
 		propertyFileName = file;
 		load();
 	}
 
+	public static Config getInstance() {
+		if(Config.instance == null) {
+			Config.instance = new Config();
+		}
+		
+		return Config.instance;
+	}
+	
+	public static Config getInstance(String file) {
+		if(Config.instance == null) {
+			Config.instance = new Config(file);
+		}
+		
+		return Config.instance;
+	}
+	
 	public String toString() {
 		return "db://" + username + ":" + password + "@" + database;
 	}

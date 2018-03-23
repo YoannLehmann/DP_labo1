@@ -12,7 +12,7 @@ public class Storage {
 	final private String fileName;
 
 	public Storage() {
-		Config config = new Config();
+		Config config = Config.getInstance();
 		fileName = config.getDatabase();
 	}
 
