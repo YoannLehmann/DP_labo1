@@ -10,6 +10,9 @@ import tp1.parts.Part;
 public class CreateMachine {
 
 	private static String DATA_FILE = "machine.dat";
+	private static final int NUM_PARTS = 3;
+	private static final int NUM_ASSEMBLED_PARTS = 1;
+	private static final int NUM_PARTS_ASSEMBLED = 2;
 
 	public static void main(String[] args) {
 		createConfigFile();
@@ -46,9 +49,6 @@ public class CreateMachine {
 		return new Part(tab[partnum], createRandomDimension(10), w);
 	}
 
-	private static final int NUM_PARTS = 3;
-	private static final int NUM_ASSEMBLED_PARTS = 1;
-	private static final int NUM_PARTS_ASSEMBLED = 2;
 
 	private static Machine createRandomMachine() {
 		System.out.println("Creating a Machine...");

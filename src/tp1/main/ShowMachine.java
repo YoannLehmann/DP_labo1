@@ -15,7 +15,6 @@ public class ShowMachine {
 		} else {
 			System.out.println("File or Machine not found.");
 		}
-		
 	}
 
 }

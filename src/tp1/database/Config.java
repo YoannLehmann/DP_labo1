@@ -15,30 +15,32 @@ public class Config {
 	private String username = null;
 	private String password = null;
 
-	public String getDatabase() {
-		return database;
+	private Config() {
+		this("config.properties");
 	}
 
-	public void setDatabase(String database) {
-		this.database = database;
+	private Config(String file) {
+		propertyFileName = file;
+		load();
 	}
 
-	public String getUsername() {
-		return username;
+	public static Config getInstance() {
+		if(Config.instance == null) {
+			Config.instance = new Config();
+		}
+		
+		return Config.instance;
 	}
+	
 
-	public void setUsername(String username) {
-		this.username = username;
+	public static Config getInstance(String file) {
+		if(Config.instance == null) {
+			Config.instance = new Config(file);
+		}
+		
+		return Config.instance;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
+	
 	private void load() {
 		Properties prop = new Properties();
 		InputStream input = null;
@@ -80,33 +82,32 @@ public class Config {
 			}
 		}
 	}
-
-	private Config() {
-		this("config.properties");
-	}
-
-	private Config(String file) {
-		propertyFileName = file;
-		load();
-	}
-
-	public static Config getInstance() {
-		if(Config.instance == null) {
-			Config.instance = new Config();
-		}
-		
-		return Config.instance;
-	}
-	
-	public static Config getInstance(String file) {
-		if(Config.instance == null) {
-			Config.instance = new Config(file);
-		}
-		
-		return Config.instance;
-	}
 	
 	public String toString() {
 		return "db://" + username + ":" + password + "@" + database;
+	}
+	
+	public String getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(String database) {
+		this.database = database;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

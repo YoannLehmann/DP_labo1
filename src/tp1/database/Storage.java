@@ -9,25 +9,25 @@ import java.io.ObjectOutputStream;
 import tp1.parts.Machine;
 
 public class Storage {
-	final private String fileName;
+	final private String filename;
 
 	public Storage() {
 		Config config = Config.getInstance();
-		fileName = config.getDatabase();
+		filename = config.getDatabase();
 	}
 
 	public Storage(String fileName) {
-		this.fileName = fileName;
+		this.filename = fileName;
 	}
 
 	public Machine load() {
 		Machine ret = null;
 
-		try (FileInputStream file = new FileInputStream(fileName)) {
+		try (FileInputStream file = new FileInputStream(filename)) {
 			try (ObjectInputStream input = new ObjectInputStream(file)) {
 				Object o = input.readObject();
 				if (!(o instanceof Machine))
-					throw new IOException("file " + fileName + " does not contain a Machine");
+					throw new IOException("file " + filename + " does not contain a Machine");
 				ret = (Machine) o;
 			}
 		} catch (Exception ex) {
@@ -38,7 +38,7 @@ public class Storage {
 	}
 
 	public void save(Machine machine) {
-		try (FileOutputStream file = new FileOutputStream(fileName)) {
+		try (FileOutputStream file = new FileOutputStream(filename)) {
 			try (ObjectOutputStream output = new ObjectOutputStream(file)) {
 				output.writeObject(machine);
 			}

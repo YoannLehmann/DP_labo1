@@ -14,17 +14,15 @@ public abstract class Composite extends Component {
 	}
 
 	public abstract String toString();
-	
 	public abstract Dimension3D getDimensions();
 	
 	public void addElement(Component part) {
 		this.listOfComponent.add(part);
 	}
 
-	int getNumberOfElements() {
+	public int getNumberOfElements() {
 		return this.listOfComponent.size();
 	}
-
 
 	public double getVolume() {
 		return this.dimensions.x * this.dimensions.y * this.dimensions.z;
